@@ -22,7 +22,23 @@ fi
 
 printf "${BLUE}%s${NORMAL}\n" "Updating Oh My Zsh"
 cd "$ZSH"
+git fetch --all
+git checkout master
 if git pull --rebase --stat origin master
+then
+  printf '%s' "$GREEN"
+  printf '%s\n' '                       ____           __  '
+  printf '%s\n' '   ____ ___  __  __   / __/___  _____/ /__'
+  printf '%s\n' '  / __ `__ \/ / / /  / /_/ __ \/ ___/ //_/'
+  printf '%s\n' ' / / / / / / /_/ /  / __/ /_/ / /  / ,<   '
+  printf '%s\n' '/_/ /_/ /_/\__, /  /_/  \____/_/  /_/|_|  '
+  printf '%s\n' '          /____/                          '
+  printf "${BLUE}%s\n" "Hooray! Oh My Zsh has been updated and/or is at the current version (from my fork)"
+else
+  printf "${RED}%s${NORMAL}\n" 'There was an error updating from my fork. Try again later?'
+fi
+
+if git pull --rebase --stat upstream master
 then
   printf '%s' "$GREEN"
   printf '%s\n' '         __                                     __   '
