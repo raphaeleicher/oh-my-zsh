@@ -38,7 +38,7 @@ else
   printf "${RED}%s${NORMAL}\n" 'There was an error updating from my fork. Try again later?'
 fi
 
-if git pull --rebase --stat upstream master
+if git merge --stat upstream/master
 then
   printf '%s' "$GREEN"
   printf '%s\n' '         __                                     __   '
