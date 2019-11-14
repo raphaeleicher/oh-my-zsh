@@ -62,3 +62,13 @@ then
 else
   printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
 fi
+
+printf "%s\n" ""
+printf "${BLUE}${BOLD}%s${NORMAL}\n" "Updating submodules..."
+if git submodule foreach git pull origin master
+then
+  printf "${BLUE}${BOLD}%s${NORMAL}\n" "Updated submodules."
+  git push
+else
+  printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
+fi
