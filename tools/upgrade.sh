@@ -31,8 +31,7 @@ git config fsck.zeroPaddedFilemode ignore
 git config fetch.fsck.zeroPaddedFilemode ignore
 git config receive.fsck.zeroPaddedFilemode ignore
 
-git fetch --all
-git checkout master
+printf "${BLUE}%s${NORMAL}\n" "Updating Oh My Zsh"
 if git pull --rebase --stat origin master
 then
   printf '%s' "$GREEN"
