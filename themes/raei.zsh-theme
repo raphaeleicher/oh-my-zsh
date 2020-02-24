@@ -20,5 +20,5 @@ RPS1='%{$fg[blue]%}%~%{$reset_color%} ${return_code} '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}» %{$fg[yellow]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}∆%{$fg[yellow]%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}∆%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}=%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}≠%{$fg[yellow]%}"
