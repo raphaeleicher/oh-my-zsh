@@ -1,16 +1,13 @@
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
-if which tput >/dev/null 2>&1; then
-    ncolors=$(tput colors)
-fi
-if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
-  RED="$(tput setaf 1)"
-  GREEN="$(tput setaf 2)"
-  YELLOW="$(tput setaf 3)"
-  BLUE="$(tput setaf 4)"
-  BOLD="$(tput bold)"
-  NORMAL="$(tput sgr0)"
+if [ -t 1 ]; then
+  RED=$(printf '\033[31m')
+  GREEN=$(printf '\033[32m')
+  YELLOW=$(printf '\033[33m')
+  BLUE=$(printf '\033[34m')
+  BOLD=$(printf '\033[1m')
+  NORMAL=$(printf '\033[m')
 else
   RED=""
   GREEN=""
@@ -30,6 +27,9 @@ git config core.autocrlf false
 git config fsck.zeroPaddedFilemode ignore
 git config fetch.fsck.zeroPaddedFilemode ignore
 git config receive.fsck.zeroPaddedFilemode ignore
+# autostash on rebase (#7172)
+resetAutoStash=$(git config --bool rebase.autoStash 2>&1)
+git config rebase.autoStash true
 
 # Update upstream remote to ohmyzsh org
 remote=$(git remote -v | awk '/https:\/\/github\.com\/robbyrussell\/oh-my-zsh\.git/{ print $1; exit }')
@@ -78,3 +78,9 @@ then
 else
   printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
 fi
+
+# Unset git-config values set just for the upgrade
+case "$resetAutoStash" in
+  "") git config --unset rebase.autoStash ;;
+  *) git config rebase.autoStash "$resetAutoStash" ;;
+esac
