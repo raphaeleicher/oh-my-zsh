@@ -5,5 +5,5 @@
 	path = custom/plugins/zsh-syntax-highlighting
   url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "custom/themes/spaceship-prompt"]
-  path = custom/themes/spaceship-prompt
-  url = https://github.com/denysdovhan/spaceship-prompt.git
+	path = custom/themes/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt.git
