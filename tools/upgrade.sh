@@ -38,7 +38,7 @@ if [ -n "$remote" ]; then
 fi
 
 printf "${BLUE}%s${NORMAL}\n" "Updating Oh My Zsh"
-if git pull --rebase --stat origin master
+if git pull --rebase --recurse-submodules --stat origin master
 then
   printf '%s' "$GREEN"
   printf '%s\n' '                       ____           __  '
