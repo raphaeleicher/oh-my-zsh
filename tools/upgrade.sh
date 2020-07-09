@@ -53,7 +53,7 @@ if [ -n "$remote" ]; then
 fi
 
 printf "${BLUE}%s${RESET}\n" "Updating Oh My Zsh"
-if git pull --rebase --recurse-submodules --stat origin master
+if git pull --rebase --stat origin master
 then
   printf '%s' "$GREEN"
   printf '%s\n' '                       ____           __  '
@@ -78,6 +78,7 @@ then
   printf "${BLUE}%s\n" "Hooray! Oh My Zsh has been updated and/or is at the current version."
   printf "${BLUE}${BOLD}%s${RESET}\n" "To keep up on the latest news and updates, follow us on twitter: https://twitter.com/ohmyzsh"
   printf "${BLUE}${BOLD}%s${RESET}\n" "Get your Oh My Zsh swag at:  https://shop.planetargon.com/collections/oh-my-zsh"
+  printf "${BLUE}${BOLD}%s${RESET}\n" "Want to get involved in the community? Join our Discord: https://discord.gg/ohmyzsh"
   git push
 else
   printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
@@ -89,6 +90,9 @@ if git submodule foreach git pull origin master
 then
   printf "${BLUE}${BOLD}%s${RESET}\n" "Updated submodules."
   git push
+  printf "${BLUE}${BOLD}%s${RESET}\n" "To keep up on the latest news and updates, follow us on twitter: https://twitter.com/ohmyzsh"
+  printf "${BLUE}${BOLD}%s${RESET}\n" "Want to get involved in the community? Join our Discord: https://discord.gg/ohmyzsh"
+  printf "${BLUE}${BOLD}%s${RESET}\n" "Get your Oh My Zsh swag at: https://shop.planetargon.com/collections/oh-my-zsh"
 else
   printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
 fi
