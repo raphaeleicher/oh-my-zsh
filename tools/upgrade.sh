@@ -90,9 +90,6 @@ if git submodule foreach git pull origin master
 then
   printf "${BLUE}${BOLD}%s${RESET}\n" "Updated submodules."
   git push
-  printf "${BLUE}${BOLD}%s${RESET}\n" "To keep up on the latest news and updates, follow us on twitter: https://twitter.com/ohmyzsh"
-  printf "${BLUE}${BOLD}%s${RESET}\n" "Want to get involved in the community? Join our Discord: https://discord.gg/ohmyzsh"
-  printf "${BLUE}${BOLD}%s${RESET}\n" "Get your Oh My Zsh swag at: https://shop.planetargon.com/collections/oh-my-zsh"
 else
   printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
 fi
