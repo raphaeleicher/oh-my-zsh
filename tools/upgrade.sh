@@ -14,6 +14,7 @@ if [ -t 1 ]; then
   YELLOW=$(printf '\033[33m')
   BLUE=$(printf '\033[34m')
   BOLD=$(printf '\033[1m')
+  UNDER=$(printf '\033[4m')
   RESET=$(printf '\033[m')
 else
   RB_RED=""
@@ -28,6 +29,7 @@ else
   GREEN=""
   YELLOW=""
   BLUE=""
+  UNDER=""
   BOLD=""
   RESET=""
 fi
@@ -53,7 +55,7 @@ if [ -n "$remote" ]; then
 fi
 
 printf "${BLUE}%s${RESET}\n" "Updating Oh My Zsh"
-if git pull --rebase --recurse-submodules --stat origin master
+if git pull --rebase --stat origin master
 then
   printf '%s' "$GREEN"
   printf '%s\n' '                       ____           __  '
