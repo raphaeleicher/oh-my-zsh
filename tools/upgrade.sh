@@ -93,6 +93,7 @@ then
   printf "${BLUE}${BOLD}%s${RESET}\n" "Updated submodules."
   git push
 else
+  status=$?
   printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
 fi
 
@@ -101,3 +102,6 @@ case "$resetAutoStash" in
   "") git config --unset rebase.autoStash ;;
   *) git config rebase.autoStash "$resetAutoStash" ;;
 esac
+
+# Exit with `1` if the update failed
+exit $status
