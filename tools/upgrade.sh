@@ -55,7 +55,6 @@ if [ -n "$remote" ]; then
 fi
 
 printf "${BLUE}%s${RESET}\n" "Updating Oh My Zsh"
-<<<<<<< HEAD
 if git pull --rebase --stat origin master
 then
   printf '%s' "$GREEN"
@@ -69,7 +68,6 @@ then
 else
   printf "${RED}%s${NORMAL}\n" 'There was an error updating from my fork. Try again later?'
 fi
-||||||| f21e646c
 last_commit=$(git rev-parse HEAD)
 if git pull --rebase --stat origin master; then
   # Check if it was really updated or not
@@ -86,23 +84,6 @@ if git pull --rebase --stat origin master; then
     if [[ "$1" = --interactive ]]; then
       "$ZSH/tools/changelog.sh" HEAD "$last_commit"
     fi
-=======
-last_commit=$(git rev-parse HEAD)
-if git pull --rebase --stat origin master; then
-  # Check if it was really updated or not
-  if [[ "$(git rev-parse HEAD)" = "$last_commit" ]]; then
-    message="Oh My Zsh is already at the latest version."
-  else
-    message="Hooray! Oh My Zsh has been updated!"
-
-    # Save the commit prior to updating
-    git config oh-my-zsh.lastVersion "$last_commit"
-
-    # Display changelog with less if available, otherwise just print it to the terminal
-    if [[ "$1" = --interactive ]]; then
-      "$ZSH/tools/changelog.sh" HEAD "$last_commit"
-    fi
->>>>>>> upstream/master
 
 if git merge --stat upstream/master
 then
