@@ -125,7 +125,7 @@ printf "${BLUE}${BOLD}%s${RESET}\n" "Updating submodules..."
 if git submodule foreach git pull origin master
 then
   printf "${BLUE}${BOLD}%s${RESET}\n" "Updated submodules."
-  git push
+  printf "${RED}${BOLD}%s${RESET}\n" "Don't forget to add, commit and push these changes!!!"
 else
   status=$?
   printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
