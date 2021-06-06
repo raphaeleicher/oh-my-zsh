@@ -61,19 +61,6 @@ local ret=0
 
 # Update Oh My Zsh
 printf "${BLUE}%s${RESET}\n" "Updating Oh My Zsh"
-#if git pull --rebase --stat origin master
-#then
-#  printf '%s' "$GREEN"
-#  printf '%s\n' '                       ____           __  '
-#  printf '%s\n' '   ____ ___  __  __   / __/___  _____/ /__'
-#  printf '%s\n' '  / __ `__ \/ / / /  / /_/ __ \/ ___/ //_/'
-#  printf '%s\n' ' / / / / / / /_/ /  / __/ /_/ / /  / ,<   '
-#  printf '%s\n' '/_/ /_/ /_/\__, /  /_/  \____/_/  /_/|_|  '
-#  printf '%s\n' '          /____/                          '
-#  printf "${BLUE}%s\n" "Hooray! Oh My Zsh has been updated and/or is at the current version (from my fork)"
-#else
-#  printf "${RED}%s${NORMAL}\n" 'There was an error updating from my fork. Try again later?'
-#fi
 last_commit=$(git rev-parse HEAD)
 if git pull --rebase --stat origin master; then
   # Check if it was really updated or not
@@ -93,19 +80,6 @@ if git pull --rebase --stat origin master; then
     printf "${BLUE}%s \`${BOLD}%s${RESET}${BLUE}\`${RESET}\n" "You can see the changelog with" "omz changelog"
   fi
 
-  printf '%s              %s         %s____ %s    %s      %s__  %s%s\n' $RAINBOW $RESET
-  printf '%s   ____ ___  %s__  __   %s/ __/%s___ %s _____%s/ /__%s%s\n' $RAINBOW $RESET
-  printf '%s  / __ `__ \%s/ / / /  %s/ /_%s/ __ \%s/ ___/%s //_/%s%s\n' $RAINBOW $RESET
-  printf '%s / / / / / /%s /_/ /  %s/ __/%s /_/ /%s /  %s/ ,<   %s%s\n' $RAINBOW $RESET
-  printf '%s/_/ /_/ /_/%s\__, /  %s/_/  %s\____/%s_/  %s/_/|_|  %s%s\n' $RAINBOW $RESET
-  printf '%s          %s/____/  %s     %s      %s    %s         %s%s\n' $RAINBOW $RESET
-  printf "${BLUE}%s${RESET}\n" "$message"
-else
-  ret=$?
-  printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
-fi
-
-if git merge --stat upstream/master; then
   printf '%s         %s__      %s           %s        %s       %s     %s__   %s\n' $RAINBOW $RESET
   printf '%s  ____  %s/ /_    %s ____ ___  %s__  __  %s ____  %s_____%s/ /_  %s\n' $RAINBOW $RESET
   printf '%s / __ \%s/ __ \  %s / __ `__ \%s/ / / / %s /_  / %s/ ___/%s __ \ %s\n' $RAINBOW $RESET
@@ -118,16 +92,7 @@ if git merge --stat upstream/master; then
   printf "${BLUE}${BOLD}%s ${UNDER}%s${RESET}\n" "Want to get involved in the community? Join our Discord:" "https://discord.gg/ohmyzsh"
   printf "${BLUE}${BOLD}%s ${UNDER}%s${RESET}\n" "Get your Oh My Zsh swag at:" "https://shop.planetargon.com/collections/oh-my-zsh"
 else
-  printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
-fi
-
-printf "${BLUE}${BOLD}%s${RESET}\n" "Updating submodules..."
-if git submodule foreach git pull origin master
-then
-  printf "${BLUE}${BOLD}%s${RESET}\n" "Updated submodules."
-  printf "${RED}${BOLD}%s${RESET}\n" "Don't forget to add, commit and push these changes!!!"
-else
-  status=$?
+  ret=$?
   printf "${RED}%s${RESET}\n" 'There was an error updating. Try again later?'
 fi
 
